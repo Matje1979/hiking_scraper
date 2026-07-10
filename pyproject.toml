@@ -1,0 +1,14 @@
+[project]
+name = "hiking-scraper"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "beautifulsoup4>=4.15.0",
+    "openai>=2.45.0",
+    "pydantic>=2.13.4",
+    "python-dotenv>=1.2.2",
+    "requests>=2.34.2",
+    "transliterate>=1.10.2",
+]
