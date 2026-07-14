@@ -1,7 +1,0 @@
-requests
-beautifulsoup4
-openai
-pydantic
-transliterate
-python-dotenv
-selenium
