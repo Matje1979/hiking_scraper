@@ -8,3 +8,8 @@ wheels/
 
 # Virtual environments
 .venv
+.venv/
+
+# Secrets and configs
+.env
+.env.*

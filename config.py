@@ -1048,8 +1048,8 @@ SUBOTICA_HIKING_CLUBS = [
         'paginator_strategy': None,
         'paginator_selector': None,
         'hiking_club_name': 'PSK Spartak',
-        # 'hiking_club_id': 25,  # Local testing ID
-        'hiking_club_id': 94,
+        'hiking_club_id': 25,  # Local testing ID
+        # 'hiking_club_id': 94,
         'base_url': 'https://pskspartak.rs',
         'url': 'https://pskspartak.rs/category/naredne-akcije/',
         'event_css': '.post-title',
@@ -1417,7 +1417,7 @@ RIO_HIKING_CLUBS = [
     # },
 ]
 
-CONFIG_DATA = BELGRADE_HIKING_CLUBS
+# CONFIG_DATA = BELGRADE_HIKING_CLUBS
 # CONFIG_DATA += NS_HIKING_CLUBS
 # CONFIG_DATA = MANCHESTER_HIKING_CLUBS_CONFIG
 # CONFIG_DATA += CROATIAN_HIKING_CLUBS
@@ -1425,7 +1425,7 @@ CONFIG_DATA = BELGRADE_HIKING_CLUBS
 # CONFIG_DATA += NEW_WEBSITES
 # CONFIG_DATA += LONDON_HIKING_CLUBS
 # CONFIG_DATA += SAN_DIEGO_HIKING_CLUBS
-# CONFIG_DATA += SUBOTICA_HIKING_CLUBS
+CONFIG_DATA = SUBOTICA_HIKING_CLUBS
 # CONFIG_DATA += ATHENS_HIKING_CLUBS
 # CONFIG_DATA += BERLIN_HIKING_CLUBS
 # CONFIG_DATA += PARIS_HIKING_CLUBS

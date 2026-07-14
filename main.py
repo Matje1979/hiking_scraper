@@ -1,7 +1,11 @@
 import os
+from dotenv import load_dotenv
+
+# Load environment variables FIRST before importing any modules that might instantiate clients
+load_dotenv()
+
 import asyncio
 import requests
-from dotenv import load_dotenv
 from schemas import NewHikesList
 from config import CONFIG_DATA
 from paginator import PaginationContext
@@ -16,10 +20,15 @@ def encode_url(url):
     
 
 async def main():
-    load_dotenv()
-    hikes = NewHikesList()
+    API_URL = os.getenv("MAIN_APP_API_URL")
+    API_KEY = os.getenv("API_KEY")
+
+    if not API_URL or not API_KEY:
+        print("Error: MAIN_APP_API_URL or API_KEY not set in environment.")
+        return
 
     for item in CONFIG_DATA:
+        hikes = NewHikesList()
 
         # if item['hiking_club_id'] not in [6]: #for testing
         #     continue
@@ -74,27 +83,23 @@ async def main():
             except Exception as e:
                 print(f"Error processing {item.get('hiking_club_name', 'unknown')}: {e}")
                 continue
-    print("Finished scraping!")
-    
-    API_URL = os.getenv("MAIN_APP_API_URL")
-    API_KEY = os.getenv("API_KEY")
+        if not hikes.hikes:
+            print(f"No hikes found for {item.get('hiking_club_name', 'unknown')}. Skipping API request.")
+            continue
 
-    if not API_URL or not API_KEY:
-        print("Error: MAIN_APP_API_URL or API_KEY not set in environment.")
-        return
-
-    print(f"Sending {len(hikes.hikes)} hikes to {API_URL}...")
-    try:
-        response = requests.post(
-            API_URL,
-            json=hikes.model_dump(),
-            headers={"api-key": API_KEY, "x-api-key": API_KEY, "Authorization": f"Bearer {API_KEY}"},
-            params={"api_key": API_KEY}
-        )
-        print(f"Response status: {response.status_code}")
-        print(f"Response body: {response.text}")
-    except Exception as e:
-        print(f"Error sending data to API: {e}")
+        print(f"Finished scraping {item.get('hiking_club_name', 'unknown')}!")
+        print(f"Sending {len(hikes.hikes)} hikes to {API_URL}...")
+        try:
+            response = requests.post(
+                API_URL,
+                json=hikes.model_dump(mode='json'),
+                headers={"api-key": API_KEY, "x-api-key": API_KEY, "Authorization": f"Bearer {API_KEY}"},
+                params={"api_key": API_KEY}
+            )
+            print(f"Response status: {response.status_code}")
+            print(f"Response body: {response.text}")
+        except Exception as e:
+            print(f"Error sending data to API: {e}")
 
 if __name__ == "__main__":
     asyncio.run(main())
