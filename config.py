@@ -1048,8 +1048,8 @@ SUBOTICA_HIKING_CLUBS = [
         'paginator_strategy': None,
         'paginator_selector': None,
         'hiking_club_name': 'PSK Spartak',
-        'hiking_club_id': 25,  # Local testing ID
-        # 'hiking_club_id': 94,
+        # 'hiking_club_id': 25,  # Local testing ID
+        'hiking_club_id': 94,
         'base_url': 'https://pskspartak.rs',
         'url': 'https://pskspartak.rs/category/naredne-akcije/',
         'event_css': '.post-title',
