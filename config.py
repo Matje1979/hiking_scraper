@@ -1176,7 +1176,7 @@ PARIS_HIKING_CLUBS = [
         'paginator_strategy': None,
         'paginator_selector': None,
         'hiking_club_name': 'Amigo Rando',
-        'hiking_club_id': None,  # TODO: assign after DB insert
+        'hiking_club_id': 1703,  # TODO: assign after DB insert
         'base_url': 'https://amigorando.fr',
         'url': 'https://amigorando.fr/evenements/',
         'event_css': '.tribe-events-calendar-list__event',
@@ -1191,7 +1191,7 @@ PARIS_HIKING_CLUBS = [
         'paginator_strategy': None,
         'paginator_selector': None,
         'hiking_club_name': 'CAF Île-de-France',
-        'hiking_club_id': None,  # TODO: assign after DB insert
+        'hiking_club_id': 1704,  # TODO: assign after DB insert
         'base_url': 'https://www.clubalpin-idf.com',
         'url': 'https://www.clubalpin-idf.com/programme-complet?i=RP&p=l',
         'event_css': '.sortie',
@@ -1368,7 +1368,7 @@ RIO_HIKING_CLUBS = [
         'paginator_strategy': None,
         'paginator_selector': None,
         'hiking_club_name': 'Gente Que Trilha',
-        'hiking_club_id': None,  # TODO: assign after DB insert
+        'hiking_club_id': 1707,  # TODO: assign after DB insert
         'base_url': 'https://www.gentequetrilha.com.br',
         'url': 'https://www.gentequetrilha.com.br/produtos/lista/',
         'event_css': 'a.grid_item',
@@ -1383,7 +1383,7 @@ RIO_HIKING_CLUBS = [
         'paginator_strategy': None,
         'paginator_selector': None,
         'hiking_club_name': 'Clube Trekking',
-        'hiking_club_id': None,  # TODO: assign after DB insert
+        'hiking_club_id': 1708,  # TODO: assign after DB insert
         'base_url': 'https://clubetrekking.com.br',
         'url': 'https://clubetrekking.com.br/trilhas/',
         'event_css': '.td_module_wrap',
@@ -1417,15 +1417,17 @@ RIO_HIKING_CLUBS = [
     # },
 ]
 
-# CONFIG_DATA = BELGRADE_HIKING_CLUBS
+CONFIG_DATA = BELGRADE_HIKING_CLUBS
 # CONFIG_DATA += NS_HIKING_CLUBS
-CONFIG_DATA = MANCHESTER_HIKING_CLUBS_CONFIG
+# CONFIG_DATA += MANCHESTER_HIKING_CLUBS_CONFIG
 # CONFIG_DATA += CROATIAN_HIKING_CLUBS
 # CONFIG_DATA += SYDNEY_HIKING_CLUBS_CONFIG
 # CONFIG_DATA += NEW_WEBSITES
-CONFIG_DATA += LONDON_HIKING_CLUBS
-# CONFIG_DATA = SAN_DIEGO_HIKING_CLUBS
-# CONFIG_DATA = SUBOTICA_HIKING_CLUBS
-# CONFIG_DATA = ATHENS_HIKING_CLUBS
+# CONFIG_DATA += LONDON_HIKING_CLUBS
+# CONFIG_DATA += SAN_DIEGO_HIKING_CLUBS
+# CONFIG_DATA += SUBOTICA_HIKING_CLUBS
+# CONFIG_DATA += ATHENS_HIKING_CLUBS
 # CONFIG_DATA += BERLIN_HIKING_CLUBS
 # CONFIG_DATA += PARIS_HIKING_CLUBS
+# CONFIG_DATA += BUDAPEST_HIKING_CLUBS
+# CONFIG_DATA += RIO_HIKING_CLUBS
