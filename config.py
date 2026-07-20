@@ -280,137 +280,137 @@ MANCHESTER_HIKING_CLUBS_CONFIG = [
 ]
 
 BELGRADE_HIKING_CLUBS = [
-    {
-        'country': 'Serbia',
-        'location_id': 1,
-        # 'location_id': 3, Local id for testing
-        'multipage': False,
-        'paginator_strategy': None,
-        'paginator_selector': None,
-        'hiking_club_name': 'Lude Ture',
-        'hiking_club_id': 1659,  # TODO: assign after DB insert
-        'base_url': 'https://www.ludeture.com',
-        'url': 'https://www.ludeture.com/',
-        'event_css': '.cta38_item',
-        'detail_css': '',
-    },
-    {
-        'country': 'Serbia',
-        'location_id': 1,
-        # 'location_id': 3, Local id for testing
-        'multipage': False,
-        'paginator_strategy': None,
-        'paginator_selector': None,
-        'hiking_club_name': 'Azimut',
-        'hiking_club_id': 35,
-        'base_url':'https://www.pdazimut.rs/',
-        'url':'https://www.pdazimut.rs/',
-        'event_css': '.najavica',
-        'detail_css': ''
-    },
-    {
-        'country': 'Serbia',
-        'location_id': 1,
-        # 'location_id': 3, Local id for testing
-        'multipage': False,
-        'paginator_strategy': None,
-        'paginator_selector': None,
-        'hiking_club_name':'Montanaro Adventure Tribe',
-        'hiking_club_id': 562,
-        # 'hiking_club_id': 7,
-        'base_url':'https://montanaro.rs',
-        'url':'https://montanaro.rs/avanture/',
-        'event_css': 'article.elementor-post',
-        'detail_css': '#content'
-    },
-    {
-        'country': 'Serbia',
-        'location_id': 1,
-        # 'location_id': 3, Local id for testing
-        'multipage': False,
-        'paginator_strategy': None,
-        'paginator_selector': None,
-        'hiking_club_name':'PD Krug',
-        'hiking_club_id': 38,
-        # 'hiking_club_id': 6,
-        'base_url':'https://pdkrug.org.rs/',
-        'url':'https://pdkrug.org.rs/aktuelne-akcije/',
-        'event_css': '.elementor-widget-wrap .elementor-inner-section',
-        'detail_css': ''
-    },
-    {
-        'country': 'Serbia',
-        'location_id': 1,
-        # 'location_id': 3, Local id for testing
-        'multipage': True,
-        'paginator_strategy': 'page_links',
-        'paginator_selector': 'https://srbijazamlade.rs/category/pesacke-ture?page=',
-        'hiking_club_name':'Srbija za Mlade',
-        'hiking_club_id': 42,
-        # 'hiking_club_id': 10,
-        'base_url':'https://srbijazamlade.rs',
-        'url':'https://srbijazamlade.rs/category/pesacke-ture',
-        'event_css': '.banner-combo2',
-        'detail_css': ''
-    },
-    {
-        'country': 'Serbia',
-        'location_id': 1,
-        # 'location_id': 3, # Local id for testing
-        'multipage': True,
-        'paginator_strategy': 'page_links',
-        'paginator_selector': 'https://www.pskpobeda.rs/view/akcije.php?page_no=',
-        'hiking_club_name':'PSK Pobeda',
-        'hiking_club_id': 31,
-        # 'hiking_club_id': 9, # Local id for testing
-        'base_url':'https://www.pskpobeda.rs/view/',
-        'url':'https://www.pskpobeda.rs/view/akcije',
-        'event_css': '.member', 'detail_css': '',
-        'deleted_event_pattern': '<title>psk pobeda - </title>'
-    },
-    {
-        'country': 'Serbia',
-        'location_id': 1,
-        # 'location_id': 3, Local id for testing
-        'multipage': True,
-        'paginator_strategy': 'page_links',
-        'paginator_selector': 'https://zeleznicar1948.rs/page/',
-        'hiking_club_name':'PD Železničar 1948',
-        'hiking_club_id': 148,
-        'base_url':'https://zeleznicar1948.rs/',
-        'url':'https://zeleznicar1948.rs/',
-        'event_css': '.frhd__post-block-article',
-        'detail_css': ''
-    },
-    {
-        'country': 'Serbia',
-        'location_id': 3,
-        # 'location_id': 1, Local id for testing
-        'multipage': True,
-        'paginator_strategy': 'page_links',
-        'paginator_selector': 'https://www.preslap.rs/?page=',
-        'hiking_club_name':'Preslap',
-        'hiking_club_id': 113,
-        'base_url':'https://www.preslap.rs/',
-        'url':'https://www.preslap.rs/',
-        'event_css': '.ic-content',
-        'detail_css': ''
-    },
-    {
-        'country': 'Serbia',
-        'location_id': 1,
-        # 'location_id': 1, Local id for testing
-        'multipage': False,
-        'paginator_strategy': None,
-        'paginator_selector': None,
-        'hiking_club_name':'PSK Balkan',
-        'hiking_club_id': 36,
-        'base_url':'https://www.pkbalkan.org/',
-        'url':'https://www.pkbalkan.org/akcije/',
-        'event_css': '.maso-item',
-        'detail_css': ''
-    },
-    {
+    # {
+    #     'country': 'Serbia',
+    #     'location_id': 1,
+    #     # 'location_id': 3, Local id for testing
+    #     'multipage': False,
+    #     'paginator_strategy': None,
+    #     'paginator_selector': None,
+    #     'hiking_club_name': 'Lude Ture',
+    #     'hiking_club_id': 1659,  # TODO: assign after DB insert
+    #     'base_url': 'https://www.ludeture.com',
+    #     'url': 'https://www.ludeture.com/',
+    #     'event_css': '.cta38_item',
+    #     'detail_css': '',
+    # },
+    # {
+    #     'country': 'Serbia',
+    #     'location_id': 1,
+    #     # 'location_id': 3, Local id for testing
+    #     'multipage': False,
+    #     'paginator_strategy': None,
+    #     'paginator_selector': None,
+    #     'hiking_club_name': 'Azimut',
+    #     'hiking_club_id': 35,
+    #     'base_url':'https://www.pdazimut.rs/',
+    #     'url':'https://www.pdazimut.rs/',
+    #     'event_css': '.najavica',
+    #     'detail_css': ''
+    # },
+    # {
+    #     'country': 'Serbia',
+    #     'location_id': 1,
+    #     # 'location_id': 3, Local id for testing
+    #     'multipage': False,
+    #     'paginator_strategy': None,
+    #     'paginator_selector': None,
+    #     'hiking_club_name':'Montanaro Adventure Tribe',
+    #     'hiking_club_id': 562,
+    #     # 'hiking_club_id': 7,
+    #     'base_url':'https://montanaro.rs',
+    #     'url':'https://montanaro.rs/avanture/',
+    #     'event_css': 'article.elementor-post',
+    #     'detail_css': '#content'
+    # },
+    # {
+    #     'country': 'Serbia',
+    #     'location_id': 1,
+    #     # 'location_id': 3, Local id for testing
+    #     'multipage': False,
+    #     'paginator_strategy': None,
+    #     'paginator_selector': None,
+    #     'hiking_club_name':'PD Krug',
+    #     'hiking_club_id': 38,
+    #     # 'hiking_club_id': 6,
+    #     'base_url':'https://pdkrug.org.rs/',
+    #     'url':'https://pdkrug.org.rs/aktuelne-akcije/',
+    #     'event_css': '.elementor-widget-wrap .elementor-inner-section',
+    #     'detail_css': ''
+    # },
+    # {
+    #     'country': 'Serbia',
+    #     'location_id': 1,
+    #     # 'location_id': 3, Local id for testing
+    #     'multipage': True,
+    #     'paginator_strategy': 'page_links',
+    #     'paginator_selector': 'https://srbijazamlade.rs/category/pesacke-ture?page=',
+    #     'hiking_club_name':'Srbija za Mlade',
+    #     'hiking_club_id': 42,
+    #     # 'hiking_club_id': 10,
+    #     'base_url':'https://srbijazamlade.rs',
+    #     'url':'https://srbijazamlade.rs/category/pesacke-ture',
+    #     'event_css': '.banner-combo2',
+    #     'detail_css': ''
+    # },
+    # {
+    #     'country': 'Serbia',
+    #     'location_id': 1,
+    #     # 'location_id': 3, # Local id for testing
+    #     'multipage': True,
+    #     'paginator_strategy': 'page_links',
+    #     'paginator_selector': 'https://www.pskpobeda.rs/view/akcije.php?page_no=',
+    #     'hiking_club_name':'PSK Pobeda',
+    #     'hiking_club_id': 31,
+    #     # 'hiking_club_id': 9, # Local id for testing
+    #     'base_url':'https://www.pskpobeda.rs/view/',
+    #     'url':'https://www.pskpobeda.rs/view/akcije',
+    #     'event_css': '.member', 'detail_css': '',
+    #     'deleted_event_pattern': '<title>psk pobeda - </title>'
+    # },
+    # {
+    #     'country': 'Serbia',
+    #     'location_id': 1,
+    #     # 'location_id': 3, Local id for testing
+    #     'multipage': True,
+    #     'paginator_strategy': 'page_links',
+    #     'paginator_selector': 'https://zeleznicar1948.rs/page/',
+    #     'hiking_club_name':'PD Železničar 1948',
+    #     'hiking_club_id': 148,
+    #     'base_url':'https://zeleznicar1948.rs/',
+    #     'url':'https://zeleznicar1948.rs/',
+    #     'event_css': '.frhd__post-block-article',
+    #     'detail_css': ''
+    # },
+    # {
+    #     'country': 'Serbia',
+    #     'location_id': 3,
+    #     # 'location_id': 1, Local id for testing
+    #     'multipage': True,
+    #     'paginator_strategy': 'page_links',
+    #     'paginator_selector': 'https://www.preslap.rs/?page=',
+    #     'hiking_club_name':'Preslap',
+    #     'hiking_club_id': 113,
+    #     'base_url':'https://www.preslap.rs/',
+    #     'url':'https://www.preslap.rs/',
+    #     'event_css': '.ic-content',
+    #     'detail_css': ''
+    # },
+    # {
+    #     'country': 'Serbia',
+    #     'location_id': 1,
+    #     # 'location_id': 1, Local id for testing
+    #     'multipage': False,
+    #     'paginator_strategy': None,
+    #     'paginator_selector': None,
+    #     'hiking_club_name':'PSK Balkan',
+    #     'hiking_club_id': 36,
+    #     'base_url':'https://www.pkbalkan.org/',
+    #     'url':'https://www.pkbalkan.org/akcije/',
+    #     'event_css': '.maso-item',
+    #     'detail_css': ''
+    # },
+    # {
         'country': 'Serbia',
         'location_id': 1,
         # 'location_id': 1, Local id for testing
