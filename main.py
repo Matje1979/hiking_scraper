@@ -12,6 +12,39 @@ from paginator import PaginationContext
 from hiking_scraper import scraper as hiking_scraper
 from urllib.parse import quote, urlparse, urlunparse
 
+from urllib.parse import quote, urlparse, urlunparse
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+def send_timeout_email(club_name, url):
+    smtp_server = os.getenv("SMTP_SERVER", "smtp.gmail.com")
+    smtp_port = int(os.getenv("SMTP_PORT", 587))
+    sender_email = os.getenv("SMTP_USERNAME")
+    sender_password = os.getenv("SMTP_PASSWORD")
+    recipient_email = "damircicic@gmail.com"
+
+    if not sender_email or not sender_password:
+        print(f"Warning: SMTP credentials not set. Could not send timeout email for {club_name}.")
+        return
+
+    msg = MIMEMultipart()
+    msg['From'] = sender_email
+    msg['To'] = recipient_email
+    msg['Subject'] = f"Scraper Timeout Alert: {club_name}"
+    
+    body = f"The scraper encountered a timeout while trying to fetch the website for {club_name}.\nURL: {url}\n\nPlease check if the website is down or blocking requests."
+    msg.attach(MIMEText(body, 'plain'))
+
+    try:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        server.starttls()
+        server.login(sender_email, sender_password)
+        server.send_message(msg)
+        server.quit()
+        print(f"Timeout notification email sent for {club_name}.")
+    except Exception as e:
+        print(f"Failed to send email for {club_name}: {e}")
 
 def encode_url(url):
     parts = urlparse(url)
@@ -40,6 +73,10 @@ async def main():
                 result = await p_context.paginate()
                 if result:
                     hikes.hikes.extend(result)
+            except requests.exceptions.Timeout:
+                print(f"Timeout during pagination for {item.get('hiking_club_name', 'unknown')}")
+                send_timeout_email(item.get('hiking_club_name', 'unknown'), item['url'])
+                continue
             except Exception as e:
                 print(f"Error during pagination for {item.get('hiking_club_name', 'unknown')}: {e}")
                 continue
@@ -53,9 +90,9 @@ async def main():
             }
             try:
                 if item.get('hiking_club_name') == 'PD Josif Pančić':
-                    res = session.get(encode_url(item['url']), headers=headers)
+                    res = session.get(encode_url(item['url']), headers=headers, timeout=15)
                 else:
-                    res = session.get(item['url'], headers=headers)
+                    res = session.get(item['url'], headers=headers, timeout=15)
                 if res.status_code != 200:
                     try:
                         headers = {
@@ -64,7 +101,7 @@ async def main():
                             "Accept-Encoding": "identity",
                             "Connection": "close",
                         }
-                        res = session.get(item['url'], headers=headers)
+                        res = session.get(item['url'], headers=headers, timeout=15)
                     except Exception as e:
                         print(f"Error fetching {item['url']}: {res.status_code}")
                         continue
@@ -73,6 +110,10 @@ async def main():
                 else:
                     html_input = res.content
 
+            except requests.exceptions.Timeout:
+                print(f"Timeout fetching {item['url']}")
+                send_timeout_email(item.get('hiking_club_name', 'unknown'), item['url'])
+                continue
             except Exception as e:
                 print(f"Error fetching {item['url']}: {e}")
                 continue
@@ -94,7 +135,8 @@ async def main():
                 API_URL,
                 json=hikes.model_dump(mode='json'),
                 headers={"api-key": API_KEY, "x-api-key": API_KEY, "Authorization": f"Bearer {API_KEY}"},
-                params={"api_key": API_KEY}
+                params={"api_key": API_KEY},
+                timeout=15
             )
             print(f"Response status: {response.status_code}")
             print(f"Response body: {response.text}")

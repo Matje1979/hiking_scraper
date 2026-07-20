@@ -65,14 +65,14 @@ class PageLinksPaginator(AbstractPaginator):
         result_list = []
         page = 1
         page_url = self.item['paginator_selector'] + str(page)
-        res = session.get(page_url, headers=headers)
+        res = session.get(page_url, headers=headers, timeout=15)
         result = await _scraper.get_hikes(self.item, res.content)
 
         while result and result.hikes:
             result_list.extend(result.hikes)
             page += 1
             page_url = self.item['paginator_selector'] + str(page)
-            res = session.get(page_url, headers=headers)
+            res = session.get(page_url, headers=headers, timeout=15)
             result = await _scraper.get_hikes(self.item, res.content)
             
         return result_list
