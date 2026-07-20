@@ -875,7 +875,7 @@ LONDON_HIKING_CLUBS = [
         'paginator_strategy': None,
         'paginator_selector': None,
         'hiking_club_name': 'Rockhoppers Mountaineering & Climbing Club',
-        # 'hiking_club_id': 15,  # Local testing ID
+        #  'hiking_club_id': 15,  # Local testing ID
         'hiking_club_id': 1691,
         'base_url': 'https://www.rockhoppers.org.uk',
         'url': 'https://www.rockhoppers.org.uk/meets',
@@ -1418,12 +1418,12 @@ RIO_HIKING_CLUBS = [
 ]
 
 # CONFIG_DATA = BELGRADE_HIKING_CLUBS
-CONFIG_DATA = NS_HIKING_CLUBS
+# CONFIG_DATA = NS_HIKING_CLUBS
 # CONFIG_DATA = MANCHESTER_HIKING_CLUBS_CONFIG
 # CONFIG_DATA += CROATIAN_HIKING_CLUBS
 # CONFIG_DATA += SYDNEY_HIKING_CLUBS_CONFIG
 # CONFIG_DATA += NEW_WEBSITES
-# CONFIG_DATA = LONDON_HIKING_CLUBS
+CONFIG_DATA = LONDON_HIKING_CLUBS
 # CONFIG_DATA = SAN_DIEGO_HIKING_CLUBS
 # CONFIG_DATA += SUBOTICA_HIKING_CLUBS
 # CONFIG_DATA += ATHENS_HIKING_CLUBS
