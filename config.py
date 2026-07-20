@@ -365,7 +365,8 @@ BELGRADE_HIKING_CLUBS = [
         # 'hiking_club_id': 9, # Local id for testing
         'base_url':'https://www.pskpobeda.rs/view/',
         'url':'https://www.pskpobeda.rs/view/akcije',
-        'event_css': '.member', 'detail_css': ''
+        'event_css': '.member', 'detail_css': '',
+        'deleted_event_pattern': '<title>psk pobeda - </title>'
     },
     {
         'country': 'Serbia',
