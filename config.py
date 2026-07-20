@@ -410,7 +410,7 @@ BELGRADE_HIKING_CLUBS = [
     #     'event_css': '.maso-item',
     #     'detail_css': ''
     # },
-    # {
+    {
         'country': 'Serbia',
         'location_id': 1,
         # 'location_id': 1, Local id for testing
