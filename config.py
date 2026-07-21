@@ -565,18 +565,18 @@ BELGRADE_HIKING_CLUBS = [
         'event_css': '.atlist__item__content',
         'detail_css': ''
     },
-    # {
-    #     'location_id': 1,
-    #     'multipage': False,
-    #     'paginator_strategy': None,
-    #     'paginator_selector': None,
-    #     'hiking_club_name':'PD Omorika',
-    #     'hiking_club_id': 298,
-    #     'base_url':'https://pdomorika.rs/',
-    #     'url':'https://pdomorika.rs/category/plan-akcija/',
-    #     'event_css': 'article .entry-title',
-    #     'detail_css': ''
-    # },
+    {
+        'location_id': 1,
+        'multipage': False,
+        'paginator_strategy': None,
+        'paginator_selector': None,
+        'hiking_club_name':'PD Omorika',
+        'hiking_club_id': 298,
+        'base_url':'https://pdomorika.rs/',
+        'url':'https://pdomorika.rs/category/plan-akcija/',
+        'event_css': 'article .entry-title',
+        'detail_css': ''
+    },
     {
         'country': 'Serbia',
         'location_id': 1,
