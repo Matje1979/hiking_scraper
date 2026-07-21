@@ -552,18 +552,19 @@ BELGRADE_HIKING_CLUBS = [
         'event_css': '.card-body',
         'detail_css': ''
     },
-    # {
-    #     'location_id': 1,
-    #     'multipage': False,
-    #     'paginator_strategy': None,
-    #     'paginator_selector': None,
-    #     'hiking_club_name':'Explore Serbia',
-    #     'hiking_club_id': 43,
-    #     'base_url':'https://explore-serbia.rs/',
-    #     'url':'https://explore-serbia.rs/ture/#',
-    #     'event_css': '.atlist__item__content',
-    #     'detail_css': ''
-    # },
+    {
+        'country': 'Serbia',
+        'location_id': 1,
+        'multipage': False,
+        'paginator_strategy': None,
+        'paginator_selector': None,
+        'hiking_club_name':'Explore Serbia',
+        'hiking_club_id': 43,
+        'base_url':'https://explore-serbia.rs/',
+        'url':'https://explore-serbia.rs/ture/',
+        'event_css': '.atlist__item__content',
+        'detail_css': ''
+    },
     # {
     #     'location_id': 1,
     #     'multipage': False,
@@ -572,8 +573,8 @@ BELGRADE_HIKING_CLUBS = [
     #     'hiking_club_name':'PD Omorika',
     #     'hiking_club_id': 298,
     #     'base_url':'https://pdomorika.rs/',
-    #     'url':'https://pdomorika.rs/category/plan-akcija/spisak-planiranih-akcija/',
-    #     'event_css': 'h4',
+    #     'url':'https://pdomorika.rs/category/plan-akcija/',
+    #     'event_css': 'article .entry-title',
     #     'detail_css': ''
     # },
     {

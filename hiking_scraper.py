@@ -244,7 +244,7 @@ class HikingScraper:
                 end_date = start_date
         except:
             return
-        if item["hiking_club_id"] in [36, 148, 52, 132]:
+        if item["hiking_club_id"] in [36, 148, 132]:
             if start_date.month < date.today().month:
                 start_date = start_date.replace(year=date.today().year + 1)
                 end_date = end_date.replace(year=date.today().year + 1)
