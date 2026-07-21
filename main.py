@@ -61,6 +61,8 @@ async def main():
         return
 
     for item in CONFIG_DATA:
+        if not item.get('hiking_club_id') == 30:
+            continue
         hikes = NewHikesList()
 
         # if item['hiking_club_id'] not in [6]: #for testing
