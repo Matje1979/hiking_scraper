@@ -1,0 +1,606 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Planinarenje, izleti i hiking Srbija | Planinarsko društvo Orfej</title>
+<meta name="description" content="Pridružite se planinarskom društvu Orfej. Organizujemo pešačke planinarske ture, hiking avanture i izlete i planinarenje širom Srbije za sve ljubitelje prirode.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="./scripts/tablica.css">
+<link rel="stylesheet" href="./vodici/stylevodici.css">
+<link rel="stylesheet" href="./karusel/stylekarusel.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="./button1/stylesbutton1.css" />
+<link rel="stylesheet" href="./scripts/navigacija1-style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+<link rel="stylesheet" href="./scripts/najave-akcija-style.css">
+<link rel="stylesheet" href="./assetspagination/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="./assetspagination/css/styles.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="./scripts/footer1-style.css">
+<link rel="stylesheet" href="./kontakt/stylekontakt.css">
+<style>
+* { box-sizing: border-box; }
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', serif;
+    background-color: #151414;
+}
+
+/* Главни контејнер без маргина/сенки, 100% ширине, без заобљења */
+.container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0px; /* да се картице не лепе уз ивице */
+    background-color: #151414; /* црна боја позадине поља са картицама */
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+}
+
+/* Уклонити празнине ивице код container-fluid секција */
+.container-fluid {
+    width: 100%;
+    align-items: center; /* вертикално центрирање */
+    margin: 0;
+    padding: 0px 0px 0px 0px;  /* горе 0px, десно 0px, доле 0px, лево 0px */
+    margin-bottom: 5px; /* додаје размак испод блока ПΔ ОРФЕЈ */
+}
+
+.container-fluid h2 {
+    margin: 0;
+    padding-top: 4px;      /* гура текст надоле унутар блока */
+    padding-bottom: 4px;    /* гура текст навише унутар блока */
+}
+
+/* Грид за туре: 1 на мобилном, максимум 2 на већим екранима */
+.tours-grid {
+    display: grid;
+    grid-template-columns: 1fr;      /* мобилни: 1 картица по реду */
+    gap: 0;                          /* без празнине између картица */
+    padding: 0;                      /* без унутрашње празнине уз ивицу екрана */
+}
+
+/* Од 576px па навише (стандардни breakpoint), две картице по реду */
+@media (min-width: 576px) {
+    .tours-grid {
+        grid-template-columns: repeat(2, 1fr);  /* максимум 2 картице */
+    }
+}
+
+.tour-card {
+    width: 100%;
+    border: 2px solid #e9ecef;
+    border-radius: 0;                 /* без заобљења да не прави визуелни размак уз ивицу */
+    padding: 12px;                    /* умерен унутрашњи размак да текст не лепи уз ивицу */
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    font-family: 'Times New Roman', serif;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    word-wrap: break-word;
+    overflow-wrap: break-word;        /* спречава излазак текста ван оквира */
+    margin-bottom: 5px;   /* размак испод сваке картице */
+}
+
+/* Индикатор земље остаје, али без утицаја на спољне маргине */
+.tour-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 5px;
+    height: 100%;
+    transition: width 0.3s;
+}
+
+/* Боје земаља */
+.tour-card.multi-country::before { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.tour-card.serbia::before        { background: #C6363C; }
+.tour-card.greece::before        { background: #0D5EAF; }
+.tour-card.romania::before       { background: #FCD116; }
+.tour-card.bulgaria::before      { background: #00966E; }
+.tour-card.bosnia::before        { background: #002395; }
+.tour-card.montenegro::before    { background: #C6363C; }
+.tour-card.macedonia::before     { background: #D20000; }
+.tour-card.slovenia::before      { background: #005DA4; }
+.tour-card.albania::before       { background: #E41E20; }
+.tour-card.italy::before         { background: #009246; }
+.tour-card.andorra::before       { background: #D0103A; }
+.tour-card.france::before        { background: #0055A4; }
+.tour-card.spain::before         { background: #AA151B; }
+
+.tour-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.tour-card:hover::before { width: 100%; opacity: 0.08; }
+
+.tour-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+/* Ширина и висина заставица width: 36px; height: 22px, 54 x 33 */
+.country-flags { display: flex; gap: 6px; }
+.country-flag { width: 54px; height: 33px; border-radius: 2px; overflow: hidden; }
+.country-flag img { width: 100%; height: 100%; object-fit: cover; }
+
+.tour-dates {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+.date-badge {
+    background: #e9ecef;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 1.2em; /* Размера фонта за датум туре */
+    font-weight: 600;
+    color: #000;
+}
+.duration-badge {
+    background: #ffc107;
+    color: #000;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 1.2em; /* Размера фонта за трајање туре */
+    font-weight: bold;
+}
+
+.tour-title {
+    font-size: 1.3em; /* Размера фонта за наслов туре */
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.tour-details {
+    color: #000;
+    line-height: 1.6;
+    font-size: 1,1em; /* Размера фонта за детаље туре */
+    margin-bottom: 10px;
+    white-space: pre-line;
+    flex-grow: 1;
+}
+
+.tour-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid #e9ecef;
+    gap: 10px;
+}
+.details-button {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1.1em; /* Размера фонта за дугме где пише "Опширније" */
+    text-decoration: none;
+    display: inline-block;
+}
+.details-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+.tour-organizer {
+    align-self: flex-end;
+    font-size: 1.2em; /* Размера фонта за водича туре */ 
+    color: #000;
+    text-align: right;
+}
+
+.tour-organizer i {
+    margin-right: 6px;
+    color: #2e7d32; /* тамно зелена, природна нијанса */
+    font-size: 1.1em;
+}
+
+.no-results {
+    text-align: center;
+    padding: 30px 10px;
+    color: #000;
+    font-size: 1.1em;
+}
+
+hr {
+    border: none;
+    height: 2px;
+    color: tomato;
+    background-color: tomato;
+}
+
+/* FOOTER ЦРНА ПОЗАДИНА */
+footer,
+footer *:not(img):not(i) {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+.footer-widget .my_text {
+  padding: 0 5px;   /* уводи размак лево и десно */
+  margin: 0px auto;    /* центрира садржај */
+  max-width: 100%;   /* спречава ширење ван екрана */
+  box-sizing: border-box;
+}
+
+
+/* Боја текста */
+footer h3, footer h4, footer h5, footer p, footer span, footer a {
+    color: #fff !important;
+}
+
+/* Ховер за линкове */
+footer a:hover {
+    color: #ddd !important;
+    background-color: #c41e3a !important;
+}
+
+/* Стилови за иконе социјалних мрежа */
+.footer-social-icon {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.footer-social-icon a {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+}
+
+.footer-social-icon a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
+}
+
+.footer-social-icon i {
+    font-size: 20px;
+    color: white !important;
+}
+
+.facebook-bg {
+    background-color: #3b5998 !important;
+}
+
+.instagram-bg {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+}
+
+.viber-bg {
+    background-color: #665CAC !important;
+}
+</style>
+</head>
+<body>
+<nav class="animenu" role="navigation" aria-label="Menu">
+<button class="animenu__toggle">
+<table>
+<tr>
+<td><font color="white">MENU&nbsp;&nbsp;</font></td>
+<td>
+<span class="animenu__toggle__bar"></span>
+<span class="animenu__toggle__bar"></span>
+<span class="animenu__toggle__bar"></span>
+</td>
+</tr>
+</table>
+</button>
+<ul class="animenu__nav">
+<li><a href="https://www.pdorfej.com/index.html">Почетна</a></li>
+<li><a href="https://www.pdorfej.com/uclanjenje.html">Учлањивање</a></li>
+<li><a href="https://www.pdorfej.com/statut_pravilnici_obrasci.html">Документа</a></li>
+<li><a href="#" class="animenu__nav__hasDropdown" aria-haspopup="true">О нама</a>
+<ul class="animenu__nav__dropdown" aria-label="submenu">
+<li><a href="https://www.pdorfej.com/drustvo.html" role="menuitem">О друштву</a></li>
+<li><a href="https://www.pdorfej.com/vodici.html" role="menuitem">Водичи</a></li>
+<li><a href="https://www.pdorfej.com/foto_video.html" role="menuitem">Фото и видео</a></li>
+<li><a href="https://www.pdorfej.com/reportaze.html" role="menuitem">Репортаже</a></li>
+<li><a href="https://www.pdorfej.com/partneri.html" role="menuitem">Пријатељи друштва</a></li>
+<li><a href="https://www.pdorfej.com/zahvalnice.html" role="menuitem">Захвалнице</a></li>
+<li><a href="https://www.pdorfej.com/novosti.html" role="menuitem">Новости</a></li>
+</ul>
+</li>
+<li><a href="https://www.pdorfej.com/kontakt.html" target="_blank">Контакт</a></li>
+</ul>
+</nav>
+<script src="./scripts/navigacija1-script.js"></script>
+
+    <div class="container-fluid">
+        <div class="row">
+        <div class="col-xl-12" style="background-color:white;">
+        <div style="text-align:center">
+        <h2>ПΔ ОРФЕЈ</h2>
+        </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+    </div>
+
+    <div class="container">
+        <div class="tours-grid" id="toursGrid"></div>
+    </div>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js'></script>
+
+<footer class="footer-section">
+    
+    <div class="container col-xl-12 col 1g-12 col-md-12">
+        <div class="row">
+        <div class="col-xl-3 col-lg-3 col-md-12 mb-30">
+        <div class="footer-widget">
+        <div class="footer-widget-heading"><br>
+        <h3>Лого</h3>
+        </div>
+        <div class="footer-logo" align="center">
+        <a href="https://www.pdorfej.com/index.html"><img src="./logo/ORFEJ2.png" class="img-fluid" alt="logo"></a>
+        </div>
+        </div>
+        </div>
+        <div class="col-xl-6 col-lg-6 col-md-12 mb-30">
+        <div class="footer-widget">
+        <div class="footer-widget-heading"><br>
+        <h3>О нама</h3>
+        </div>
+        <div class="my_text">
+        <font color="white"><h5>Спортска грана Планинарског друштва ОРФЕЈ је планинарство.
+        Друштво, у складу са постављеним циљевима, развија следеће планинарске спортске дисциплине:
+        Изворне планинарске дисциплине:
+        1) пешачење у природи,
+        2) планинарење,
+        3) планинарска оријентација,
+        4) планинско трчање.
+        Техничке планинарске дисциплине:
+        1) Високогорство,
+        2) Алпинизам: пењање у стени, пењање у леду.
+        3) Спортско пењање: спортско пењање на природној стени, спортско пењање на вештачкој стени.
+        4) Спелеологија,
+        5) Турно скијање,
+        6) Кретање кроз кањоне (кањонинг) и
+        7) Планински бициклизам.
+        Друштво може учествовати на такмичењима у следећим дисциплинама:
+        1) планинарска оријентација,
+        2) спортско пењање на природној стени,
+        3) пењање у леду и симулацији леда (драј тулинг)
+        4) планинарски вишебој,
+        5) турно скијање,
+        6) планинарски трекинг,
+        7) планинско трчање са препрекама,
+        8) првенство и планинарски куп у походном и трансверзалном планинарењу (попуњавањем учесничких књижица).
+        Организујемо планинарске акције једнодневне, викенд и вишедневне у земљи и иностранству. За више информација позовите нас или нам пишите. <br><br>Пешие походы с подъемами на вершины. Путешествие в горах, пешие туры, горные походы, экскурсии в горы с гидом. Горный туризм, альпинизм, хайкинг - однодневные и многодневные горные походы, каньонинг, передвижение по каньонам, треккинг, скалолазание. Маршруты и пешие походы в Сербии и за рубежом, заграничные туры. Экскурсии по горам из Белграда. Не стесняйтесь написать нам и уточнить детали горного похода. Русскоговорящие гиды помогут Вам сориентироваться в программах походов. ПД ОРФЕЙ, Белград, Сербия.
+        </h5></font>
+        </div>
+        </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-12 mb-30">
+        <div class="footer-widget">
+        <div class="footer-widget-heading"><br>
+        <h3>Контакт</h3>
+        </div>
+        <div class="single-cta">
+        <i class="fas fa-map-marker-alt"></i>
+        <div class="cta-text">
+        <h4>Адреса</h4>
+        <span><font color="white"><h5>Новоградска 57, 11080 Земун</h5></font></span>
+        </div>
+        </div>
+        <div class="single-cta">
+        <i class="fas fa-phone"></i>
+        <div class="cta-text">
+        <h4>Позовите</h4>
+        <span><font color="white"><h5>064 3126630</h5></font></span>
+        </div>
+        </div>
+        <div class="single-cta">
+        <i class="far fa-envelope-open"></i>
+        <div class="cta-text">
+        <h4>Е-пошта</h4>
+        <span><font color="white"><h5><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a1c8cfc7cee1d1c5ced3c7c4cb8fc2cecc">[email&#160;protected]</a></h5></font></span>
+        </div>
+        </div>
+        <br>
+        <div class="footer-widget-heading">
+        <h3>Пратите нас</h3>
+        </div>
+        <div class="footer-social-icon">
+            <a href="https://www.facebook.com/PDORFEJ/" target="_blank" class="facebook-bg">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/pdorfej/" target="_blank" class="instagram-bg">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://invite.viber.com/?g2=AQAZBJZDvGue4U8W%2Bl2aQyw3%2BbBZckoupFycE0wf%2B2Fzde%2BqXEJBODeJ%2Fbk53Hwd" target="_blank" class="viber-bg">
+                <i class="fab fa-viber"></i>
+            </a>
+        </div>
+        </div>
+        </div>
+        </div>
+    </div><br>
+
+<div class="container-fluid">
+    <div class="footer-widget-heading"><br>
+        <h3>Одредбе закона</h3>
+    </div>
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12">
+            <div class="footer-widget">
+                <div class="my_text">
+                    <h5 style="color:white;">
+                        На основу Закона о туризму и Службеног гласника РС, бр. 17/2019, садржај сајта је намењен само за планинаре који имају планинарску картицу Планинарског савеза Србије са овереном маркицом за текућу годину и планинарске акције се организују у складу са статутом Планинарског друштва ОРФЕЈ. На основу Службеног гласника РС, бр. 2/2016, није обезбеђена заштита у погледу гаранција путовања, тј. не важе одредбе из правилника.
+                    </h5><br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container-fluid">
+        <div class="footer-widget-heading">
+        <h3>Линкови</h3>
+        </div>
+        <div class="row">
+        <div style="text-align:center">
+        <div class="navbar2">
+        <a href="https://www.pdorfej.com/index.html">Почетна</a>
+        <a href="https://www.pdorfej.com/uclanjenje.html">Учлањивање</a>
+        <a href="https://www.pdorfej.com/statut_pravilnici_obrasci.html">Документа</a>
+        <a href="https://www.pdorfej.com/drustvo.html">О друштву</a>
+        <a href="https://www.pdorfej.com/vodici.html">Водичи</a>
+        <a href="https://www.pdorfej.com/partneri.html">Пријатељи друштва</a>
+        <a href="https://www.pdorfej.com/zahvalnice.html">Захвалнице</a>
+        <a href="https://www.pdorfej.com/kontakt.html">Контакт</a>
+        </div>
+        </div>
+        </div>
+    </div>
+    
+    <div class="copyright-area">
+        <div class="container">
+        <div class="row">
+        <div class="col-xl-12 col-lg-12 text-center">
+        <div class="copyright-text">
+        <p>Copyright &copy; 2019, All Right Reserved <a href="https://www.pdorfej.com/">Александар Цветковић</a></p>
+        </div>
+        </div>
+        </div>
+        </div>
+    </div>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+document.querySelector('.animenu__toggle').addEventListener('click', function() {
+    document.querySelector('.animenu__nav').classList.toggle('animenu__nav--active');
+});
+const tours = [
+            {
+                id: 5,
+                startDate: '19.07.2026',
+                endDate: '19.07.2026',
+                duration: 1,
+                title: 'Специјални резерват природе "Велики Рзав" и Соколица',
+                details: '',
+                organizers: ['Александар Цветковић'],
+                countries: ['serbia'],
+                countryNames: ['Србија'],
+                detailsUrl: 'https://www.pdorfej.com/Sokolica_2026.html'
+            },
+            {
+                id: 5,
+                startDate: '25.07.2026',
+                endDate: '25.07.2026',
+                duration: 1,
+                title: 'Кошутњак: Зелено срце Београда',
+                details: '',
+                organizers: ['Весна Илић'],
+                countries: ['serbia'],
+                countryNames: ['Србија'],
+                detailsUrl: 'https://www.pdorfej.com/Kosutnjak_2026.html'
+            },
+            {
+                id: 5,
+                startDate: '26.07.2026',
+                endDate: '26.07.2026',
+                duration: 1,
+                title: 'Кањони Црне и Каменичке реке',
+                details: '',
+                organizers: ['Петар Цветковић'],
+                countries: ['serbia'],
+                countryNames: ['Србија'],
+                detailsUrl: 'https://www.pdorfej.com/Crna_Kamenicka_reka_2026.html'
+            }
+];
+function getCountryClass(countries) {
+    if (countries.length > 1) {
+return 'multi-country';
+    }
+    return countries[0];
+}
+function getFlagImage(countryCode) {
+    const flagImages = {
+        'serbia': 'https://flagcdn.com/rs.svg',
+        'greece': 'https://flagcdn.com/gr.svg',
+        'romania': 'https://flagcdn.com/ro.svg',
+        'bulgaria': 'https://flagcdn.com/bg.svg',
+        'bosnia': 'https://flagcdn.com/ba.svg',
+        'montenegro': 'https://flagcdn.com/me.svg',
+        'macedonia': 'https://flagcdn.com/mk.svg',
+        'slovenia': 'https://flagcdn.com/si.svg',
+        'albania': 'https://flagcdn.com/al.svg',
+        'italy': 'https://flagcdn.com/it.svg',
+        'andorra': 'https://flagcdn.com/ad.svg',
+        'france': 'https://flagcdn.com/fr.svg',
+        'spain': 'https://flagcdn.com/es.svg'
+    };
+    return flagImages[countryCode] || 'https://flagcdn.com/w40/rs.png';
+}
+function getDurationText(duration) {
+    if (duration === 1) {
+return 'дан';
+    } else if (duration === 2 || duration === 3 || duration === 4) {
+return 'дана';
+    } else {
+return 'дана';
+    }
+}
+function renderTours(filteredTours) {
+    const grid = document.getElementById('toursGrid');
+    if (filteredTours.length === 0) {
+grid.innerHTML = '<div class="no-results">Нема вишедневних тура.</div>';
+return;
+    }
+    grid.innerHTML = filteredTours.map(tour => `
+<div class="tour-card ${getCountryClass(tour.countries)}" onclick="window.open('${tour.detailsUrl}', '_blank')">
+    <div class="tour-header">
+<div style="width: 20px;"></div>
+<div class="country-flags">
+    ${tour.countries.map((country, index) => `
+<div class="country-flag" title="${tour.countryNames[index]}">
+    <img src="${getFlagImage(country)}" alt="${tour.countryNames[index]}">
+</div>
+    `).join('')}
+</div>
+    </div>
+    <div class="tour-dates">
+<span class="date-badge">📅 ${tour.startDate}</span>
+${tour.startDate !== tour.endDate ? `<span class="date-badge">→ ${tour.endDate}</span>` : ''}
+<span class="duration-badge">${tour.duration} ${getDurationText(tour.duration)}</span>
+    </div>
+    <div class="tour-title">${tour.title}</div>
+    ${tour.details ? `<div class="tour-details">${tour.details}</div>` : ''}
+    <div class="tour-footer">
+        <button class="details-button" onclick="event.stopPropagation(); window.open('${tour.detailsUrl}', '_blank')">Опширније</button>
+        <div class="tour-organizer">
+            <i class="fas fa-hiking"></i> <strong>Водич:</strong> ${tour.organizers.join(', ')}
+        </div>
+    </div>
+</div>
+    `).join('');
+}
+renderTours(tours);
+</script>
+</body>
+</html>

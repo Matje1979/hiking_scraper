@@ -449,7 +449,9 @@ BELGRADE_HIKING_CLUBS = [
         'base_url':'https://www.pdorfej.com/',
         'url':'https://www.pdorfej.com/',
         'event_css': '.tour-card',
-        'detail_css': ''
+        'detail_css': '',
+        'extraction_strategy': 'js_var',
+        'js_var_pattern': r'const tours\s*=\s*\[([\s\S]*?)\];'
     },
     {
         'country': 'Serbia',
