@@ -63,8 +63,8 @@ async def main():
     for item in CONFIG_DATA:
         hikes = NewHikesList()
 
-        if item['hiking_club_id'] not in [298]:
-            continue
+        # if item['hiking_club_id'] not in [298]:
+        #     continue
         # import pdb; pdb.set_trace()
         if item.get('multipage') == True:
             p_context = PaginationContext(item)
