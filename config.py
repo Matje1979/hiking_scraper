@@ -1044,6 +1044,96 @@ SAN_DIEGO_HIKING_CLUBS = [
     # },
 ]
 
+LOS_ANGELES_HIKING_CLUBS = [
+    {
+        'country': 'United States',
+        'location_id': 847,  # TODO: assign after DB insert (Los Angeles)
+        'multipage': True,
+        'paginator_strategy': 'page_links',
+        'paginator_selector': 'https://www.sierraclub.org/angeles/outings-events-schedule-activities?page=',
+        'hiking_club_name': 'Sierra Club Angeles Chapter',
+        'hiking_club_id': None,  # TODO: assign after DB insert
+        'base_url': 'https://www.sierraclub.org',
+        'url': 'https://www.sierraclub.org/angeles/outings-events-schedule-activities',
+        'event_css': 'table.views-table tbody tr',
+        'detail_css': '',
+        # Notes: Drupal 10 site. Schedule of Activities page lists upcoming outings
+        # in a views table. Each <tr> in tbody is one outing row with date, activity
+        # name, sponsor section, leader, and difficulty. Pagination via ?page= param.
+        # Events open to members and non-members; some require waiver sign-off.
+        # The Sierra Club page may require additional headers or session handling —
+        # test with a real request before deploying (returned 403 on some fetch attempts).
+    },
+    {
+        'country': 'United States',
+        'location_id': 847,  # TODO: assign after DB insert (Los Angeles)
+        'multipage': False,
+        'paginator_strategy': None,
+        'paginator_selector': None,
+        'hiking_club_name': 'Great Outdoors Los Angeles',
+        'hiking_club_id': None,  # TODO: assign after DB insert
+        'base_url': 'https://greatoutdoorsla.org',
+        'url': 'https://greatoutdoorsla.org/la-events',
+        'event_css': '.boxesListItem',
+        'detail_css': '',
+        'link_skip_patterns': ['/Registration', '/Attendees', 'javascript:'],
+        'css_exclude': ['.boxBodyContentContainer'],
+        # Notes: Wild Apricot platform (same as Great Outdoors San Diego). LGBTQ+ and allies
+        # outdoor group. /la-events shows the full LA event list as .boxesListItem cards.
+        # .boxBodyContentContainer holds the long description (visually clipped) — excluded.
+        # Home page at /la also shows a short upcoming-events sidebar (ul > li) useful as fallback.
+    },
+    # {
+    #     'country': 'United States',
+    #     'location_id': 847,  # TODO: assign after DB insert (Los Angeles)
+    #     'multipage': False,
+    #     'paginator_strategy': None,
+    #     'paginator_selector': None,
+    #     'hiking_club_name': 'LA Trail Hikers',
+    #     'hiking_club_id': None,  # TODO: assign after DB insert
+    #     'base_url': 'https://www.latrailhikers.com',
+    #     'url': 'https://www.latrailhikers.com/schedule/',
+    #     'event_css': '.hikeslist li',
+    #     'detail_css': '',
+    #     # Notes: WordPress site (Hestia theme). Schedule page lists hikes in
+    #     # <ul class="hikeslist"> with one <li> per hike entry. Each li contains
+    #     # date, difficulty level, hike name link, and time window. Last updated 2021 —
+    #     # verify that the schedule is still actively maintained before enabling.
+    # },
+    # {\n
+    #     'country': 'United States',
+    #     'location_id': 847,
+    #     'multipage': False,
+    #     'paginator_strategy': None,
+    #     'paginator_selector': None,
+    #     'hiking_club_name': 'Caltech Mountaineering Club',
+    #     'hiking_club_id': None,  # TODO: assign after DB insert
+    #     'base_url': 'https://cmc.caltech.edu',
+    #     'url': 'https://cmc.caltech.edu',
+    #     'event_css': '',
+    #     'detail_css': '',
+    #     # Notes: University mountaineering club (Caltech). Historically active.
+    #     #        Site structure and event listing CSS needs to be inspected before use.
+    # },
+    # {
+    #     'country': 'United States',
+    #     'location_id': 847,
+    #     'multipage': False,
+    #     'paginator_strategy': None,
+    #     'paginator_selector': None,
+    #     'hiking_club_name': 'SoCal Hike Calendar (aggregate)',
+    #     'hiking_club_id': None,
+    #     'base_url': 'https://socalhiker.net',
+    #     'url': 'https://socalhiker.net/socal-hike-calendar/',
+    #     'event_css': '',
+    #     'detail_css': '',
+    #     # Notes: Aggregator calendar that pulls events from multiple SoCal hiking
+    #     #        groups (Shoestring Adventures, LA Hiking Group, etc.). Embeds an
+    #     #        external calendar widget — events may not be in static HTML.
+    #     #        Would need JavaScript rendering (Playwright/Selenium) to extract.
+    # },
+]
+
 SUBOTICA_HIKING_CLUBS = [
     {
         'country': 'Serbia',
@@ -1421,17 +1511,217 @@ RIO_HIKING_CLUBS = [
     # },
 ]
 
-# CONFIG_DATA = BELGRADE_HIKING_CLUBS
-CONFIG_DATA = NS_HIKING_CLUBS
-# CONFIG_DATA += MANCHESTER_HIKING_CLUBS_CONFIG
+SAN_FRANCISCO_HIKING_CLUBS = [
+    {
+        'country': 'United States',
+        'location_id': 848,  # TODO: assign after DB insert (San Francisco)
+        'multipage': False,
+        'paginator_strategy': None,
+        'paginator_selector': None,
+        'hiking_club_name': 'San Francisco Hiking Club',
+        'hiking_club_id': None,  # TODO: assign after DB insert
+        'base_url': 'https://www.sfhiking.com',
+        'url': 'https://www.sfhiking.com/events-list',
+        'event_css': '.eventItem',
+        'detail_css': '',
+        'link_skip_patterns': ['/Registration', '/Attendees', 'javascript:'],
+        # Notes: Wild Apricot platform (same as Great Outdoors SD/LA). Member-driven hiking
+        # club established in the Bay Area. Standard WA event list path is /events-list.
+        # Each .eventItem row contains date, title, and a link to event details.
+        # Verify path is accessible — some WA instances use custom URLs or require login.
+    },
+    {
+        'country': 'United States',
+        'location_id': 848,  # TODO: assign after DB insert (San Francisco)
+        'multipage': False,
+        'paginator_strategy': None,
+        'paginator_selector': None,
+        'hiking_club_name': 'California Alpine Club',
+        'hiking_club_id': None,  # TODO: assign after DB insert
+        'base_url': 'https://californiaalpineclub.org',
+        'url': 'https://californiaalpineclub.org/calendar/category/club-outings/',
+        'event_css': '.tribe-events-calendar-list__event-row',
+        'detail_css': '',
+        # Notes: WordPress + The Events Calendar plugin. Body has `tribe-no-js` class,
+        # meaning event rows are server-side rendered into the static HTML.
+        # /calendar/category/club-outings/ filters to hiking outings only.
+        # Other relevant categories: /category/alpine-lodge-events/, /category/echo-summit-lodge-events/.
+        # Events include date, title, location, and link to detail page.
+    },
+    # {
+    #     'country': 'United States',
+    #     'location_id': 848,
+    #     'multipage': True,
+    #     'paginator_strategy': 'page_links',
+    #     'paginator_selector': 'https://www.sierraclub.org/sfbay/outings-events-schedule-activities?page=',
+    #     'hiking_club_name': 'Sierra Club SF Bay Chapter',
+    #     'hiking_club_id': None,
+    #     'base_url': 'https://www.sierraclub.org',
+    #     'url': 'https://www.sierraclub.org/sfbay/outings-events-schedule-activities',
+    #     'event_css': 'table.views-table tbody tr',
+    #     'detail_css': '',
+    #     # Notes: Drupal 10 site. Same platform as the Angeles chapter. Outings schedule
+    #     # lists upcoming activities in a views table with date, title, section, leader, level.
+    #     # Pagination via ?page= param.
+    #     # BLOCKED: Returns HTTP 403 on direct fetch. May need User-Agent spoofing or
+    #     # browser-based scraping (Playwright/Selenium). Test before enabling.
+    # },
+    {
+        'country': 'United States',
+        'location_id': 848,
+        'multipage': False,
+        'paginator_strategy': None,
+        'paginator_selector': None,
+        'hiking_club_name': 'Outdoor Adventure Club',
+        'hiking_club_id': None,
+        'base_url': 'https://outdooradventureclub.com',
+        'url': 'https://outdooradventureclub.com/events/',
+        'event_css': '#SFctr a.SFevt',
+        'detail_css': '',
+        # Notes: WordPress + Hestia Pro theme. Events are rendered by a MembershipWorks
+        # JS widget (#SFctr, data-org="11962"). The event list is loaded dynamically via
+        # AJAX after page load — the static HTML contains only a "Loading…" placeholder.
+        # Would need JavaScript rendering (Playwright/Selenium) to extract events.
+    },
+    {
+        'country': 'United States',
+        'location_id': 848,
+        'multipage': False,
+        'paginator_strategy': None,
+        'paginator_selector': None,
+        'hiking_club_name': 'Tourist Club San Francisco',
+        'hiking_club_id': None,
+        'base_url': 'https://touristclubsf.org',
+        'url': 'https://touristclubsf.org/calendar',
+        'event_css': '',
+        'detail_css': '',
+        # Notes: Private members-only club on Mt. Tamalpais. Occasionally opens to the public.
+        #        Site structure and event listing CSS needs to be inspected before use.
+        #        Events are infrequent and may not follow a consistent listing pattern.
+    },
+    # {
+    #     'country': 'United States',
+    #     'location_id': 848,
+    #     'multipage': False,
+    #     'paginator_strategy': None,
+    #     'paginator_selector': None,
+    #     'hiking_club_name': 'Greenbelt Alliance',
+    #     'hiking_club_id': None,
+    #     'base_url': 'https://www.greenbelt.org',
+    #     'url': 'https://www.greenbelt.org/events/',
+    #     'event_css': 'a[href*="eventbrite.com/e/"]',
+    #     'detail_css': '',
+    #     # Notes: Uses Eventbrite API Widget (eaw) for event listings.
+    #     # BLOCKED: 1. Returns HTTP 403 on direct static fetch (WAF/Cloudflare).
+    #     #          2. Links go to Eventbrite, which cannot be statically scraped for details.
+    # },
+]
+
+SACRAMENTO_HIKING_CLUBS = [
+    # {
+    #     'country': 'United States',
+    #     'location_id': None,  # TODO: assign after DB insert (Sacramento)
+    #     'multipage': False,
+    #     'paginator_strategy': None,
+    #     'paginator_selector': None,
+    #     'hiking_club_name': 'Sacramento Walking Sticks',
+    #     'hiking_club_id': None,  # TODO: assign after DB insert
+    #     'base_url': 'http://www.sacramentowalkingsticks.org',
+    #     'url': 'http://www.sacramentowalkingsticks.org/CalendarOfEvents.html',
+    #     'event_css': '',
+    #     'detail_css': '',
+    #     # Notes: One of the largest walking clubs in the US.
+    #     # BLOCKED: The CalendarOfEvents.html endpoint returns 502 Bad Gateway intermittently.
+    #     # Site structure and event listing CSS needs to be inspected when it's back online.
+    # },
+    # {
+    #     'country': 'United States',
+    #     'location_id': None,
+    #     'multipage': False,
+    #     'paginator_strategy': None,
+    #     'paginator_selector': None,
+    #     'hiking_club_name': 'Sierra Club Mother Lode Chapter',
+    #     'hiking_club_id': None,
+    #     'base_url': 'https://www.sierraclub.org',
+    #     'url': 'https://www.sierraclub.org/mother-lode/outings',
+    #     'event_css': '',
+    #     'detail_css': '',
+    #     # Notes: The Mother Lode Chapter and Sacramento Group do not use the CampfireEvents widget.
+    #     # Instead, they redirect all outing schedules to their Meetup page
+    #     # (https://www.meetup.com/Sacramento-Sierra-Club/).
+    #     # BLOCKED: Meetup.com heavily relies on JS and anti-scraping measures.
+    #     # Cannot be scraped using static HTML parsers.
+    # },
+    # {
+    #     'country': 'United States',
+    #     'location_id': None,
+    #     'multipage': False,
+    #     'paginator_strategy': None,
+    #     'paginator_selector': None,
+    #     'hiking_club_name': 'Trail Mix Hikes Sacramento',
+    #     'hiking_club_id': None,
+    #     'base_url': 'https://www.meetup.com',
+    #     'url': 'https://www.meetup.com/trailmixhikes/',
+    #     'event_css': '',
+    #     'detail_css': '',
+    #     # Notes: A very active local hiking group.
+    #     # BLOCKED: Uses Meetup.com for event scheduling. Requires JS rendering/API integration.
+    # },
+    {
+        'country': 'United States',
+        'location_id': None,  # TODO: assign after DB insert (Sacramento)
+        'multipage': True,
+        'paginator_strategy': 'page_links',
+        'paginator_selector': 'https://www.cosumnes.org/events/page/',
+        'hiking_club_name': 'Cosumnes River Preserve',
+        'hiking_club_id': None,  # TODO: assign after DB insert
+        'base_url': 'https://www.cosumnes.org',
+        'url': 'https://www.cosumnes.org/events/',
+        'event_css': 'article.ecwd_event',
+        'detail_css': '',
+    },
+    {
+        'country': 'United States',
+        'location_id': None,
+        'multipage': False,
+        'paginator_strategy': None,
+        'paginator_selector': None,
+        'hiking_club_name': 'Sacramento Valley CNPS',
+        'hiking_club_id': None,
+        'base_url': 'https://sacvalleycnps.org',
+        'url': 'https://sacvalleycnps.org/events/',
+        'event_css': 'article.mec-event-article',
+        'detail_css': '',
+    },
+    {
+        'country': 'United States',
+        'location_id': None,
+        'multipage': False,
+        'paginator_strategy': None,
+        'paginator_selector': None,
+        'hiking_club_name': 'San Joaquin Audubon Society',
+        'hiking_club_id': None,
+        'base_url': 'https://www.sanjoaquinaudubon.org',
+        'url': 'https://www.sanjoaquinaudubon.org/events/list/',
+        'event_css': 'article.tribe-events-calendar-list__event',
+        'detail_css': '',
+    },
+]
+
+CONFIG_DATA = BELGRADE_HIKING_CLUBS
+CONFIG_DATA += NS_HIKING_CLUBS
+CONFIG_DATA += MANCHESTER_HIKING_CLUBS_CONFIG
 CONFIG_DATA += CROATIAN_HIKING_CLUBS
 # CONFIG_DATA += SYDNEY_HIKING_CLUBS_CONFIG
 # CONFIG_DATA += NEW_WEBSITES
-# CONFIG_DATA += LONDON_HIKING_CLUBS
-# CONFIG_DATA += SAN_DIEGO_HIKING_CLUBS
-# CONFIG_DATA += SUBOTICA_HIKING_CLUBS
-# CONFIG_DATA += ATHENS_HIKING_CLUBS
-# CONFIG_DATA += BERLIN_HIKING_CLUBS
-# CONFIG_DATA += PARIS_HIKING_CLUBS
-# CONFIG_DATA += BUDAPEST_HIKING_CLUBS
-# CONFIG_DATA += RIO_HIKING_CLUBS
+CONFIG_DATA += LONDON_HIKING_CLUBS
+CONFIG_DATA += SAN_DIEGO_HIKING_CLUBS
+CONFIG_DATA += SUBOTICA_HIKING_CLUBS
+CONFIG_DATA += ATHENS_HIKING_CLUBS
+CONFIG_DATA += BERLIN_HIKING_CLUBS
+CONFIG_DATA += PARIS_HIKING_CLUBS
+CONFIG_DATA += BUDAPEST_HIKING_CLUBS
+CONFIG_DATA += RIO_HIKING_CLUBS
+# CONFIG_DATA += LOS_ANGELES_HIKING_CLUBS
+# CONFIG_DATA += SAN_FRANCISCO_HIKING_CLUBS
+# CONFIG_DATA += SACRAMENTO_HIKING_CLUBS
