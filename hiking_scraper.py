@@ -294,6 +294,13 @@ class HikingScraper:
         Extract the following details in JSON format:
         - guide: The name of the guide.
         - price: The price for participation in the event.
+        Note: the Serbian word "slobodno" does NOT always mean "free of charge".
+        Often it means that there are still free places in the group and that
+        people can apply (e.g. "slobodno još 5 mesta", "ima slobodnih mesta").
+        Only treat the event as free if the text clearly states that participation
+        costs nothing (e.g. "besplatno", "bez nadoknade"). If "slobodno" refers
+        to availability of places, ignore it and extract the actual price
+        if one is given; otherwise leave the price empty.
         - length: The length of the trail that will be hiked.
         - elevation_gain: the total number of meters that hikers will ascend 
         during the hike (visinska razlika u usponu in Serbian).
